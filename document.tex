@@ -1,0 +1,140 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx} 
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{float}
+\usepackage{wrapfig} 
+\input{epsfx}
+\setlength{\parindent}{20pt}
+
+\begin{document}
+
+
+\title{PRACA DYPLOMOWA INŻYNIERSKA}
+\maketitle
+
+\newpage
+\section*{Streszczenie}
+\section*{Abstract}
+
+\newpage 
+\section{Wstęp}
+	\subsection{Motywacja wyboru pracy}
+ 		\paragraph{\noindent} 
+ 		Obecnie coraz częściej w kościołach czy świątyniach możemy spotkać rzutniki czy wyświetlacze led, na których ekranizowane są teksty pieśni.
+		Zbiory pieśni dostarczane przez producentów wyświetlaczy nie są w stanie sprostać dynamicznemu rozwojowi muzyki - powstawaniu nowych utworów
+		oraz bardzo zróżnicowanym tradycjom lokalnym oraz indywidualnym upodobaniom muzyków kościelnych wykorzystującym różne śpiewniki.
+		Czasochłonny proces budowy wspomnianych zbiorów często opiera się na ręcznym przepisywaniu tekstów ze śpiewników.
+		Automatyzacja tego procesu pozwoli na łatwiejsze dopasowanie zbiorów do potrzeb muzyków kościelnych i tradycji lokalnych. 
+
+	\subsection{Cel pracy}
+		\paragraph{\noindent}
+		Podjęte wysiłki miały na celu zaprojektowanie algorytmów oraz budowę aplikacji okienkowej o prostym i przyjaznym dla użytkownika interfejsie, która umożliwi pozyskanie ze zdjęć śpiewników tekstów pieśni.
+		Opierając się na przetwarzaniu obrazów (detekcji i usunięciu znaków muzycznych) i rozpoznawaniu ciągów znaków abecadła (słów) uwzględniając polskie znaki diakrytyczne.
+
+\newpage 
+
+\section{Wykorzystane technologie}
+
+\subsection{Język programowania Java SE 8}
+\textbackslash\textbackslash wstep o jezyku \\
+\textbackslash\textbackslash popularnosc co pomoze w utrzymaniu projektu \\
+\textbackslash\textbackslash lambdy i strumienie ulatwiajace przetrwarzane
+
+\subsection{Biblioteka OpenCv}
+
+OpenCv jest biblioteką służącą do komputerowego przetwarzania obrazów oraz uczenia maszynowego, 
+o otwartym kodzie źródłowym.
+\subsubsection{Zarys historyczny}
+Prace nad budową tej biblioteki rozpoczął jeden z pracowników firmy Intel - Gary Rost Bradski, zainspirowany środowiskiem akademickim, które wówczas posiadało bardzo bogatą infrastrukturę służącą do przetwarzania obrazów, jednak przeznaczoną dla użytku wewnętrznego. 
+Studenci w obrębie jednej jednostki akademickiej dzielili się kodem zawierającym gotowe implementacje algorytmów, co znacząco ułatwiało prace przy własnych projektach czy aplikacjach. 
+Stąd głównym celem biblioteki OpenCv jest udostępnienie wszystkim zainteresowanym zagadnieniami przetwarzania obrazów i sztucznej inteligencji gotowej jednolitej, darmowej infrastruktury pozwalającej na pracę, tak aby nie trzeba było ponownie ''wynajdywać koła''.\\
+
+OpenCv zostało przedstawione po raz pierwszy w 1999 roku szerszemu gronu odbiorców. 
+\paragraph{Wersja 1.0}
+W wersji 1.0 kod biblioteki stanowiły wyłącznie najbardziej użyteczne przy przetwarzaniu obrazów
+algorytmy zaimplementowane w języku C. 
+Od tego czasu biblioteka znacząco się zmieniła. 
+\paragraph{Wersja 2.0}
+W wersji 2.0 znaczący wpływ na wydanie wywarły trendy obecne w prowadzeniu projektów, w których wytwarza się oprogramowanie - repozytorium kodu w systemie kontroli wersji Git, gdzie możemy znaleźć najnowszą wersję biblioteki i najświeższe poprawki, testy jednostkowe czy booty ciągłej kompilacji. 
+Zaimplementowano również interfejsy dla języków programowania takich jak C++ oraz Javy, Python’a, MATLAB-a.
+Od tego czasu nowe typy danych i funkcje/metody implementowano w C++, a już napisane w języku C dopasowano do nowej technologii.
+\paragraph{Wersja 3.0}
+Nieustannie zwiększająca się liczba zaimplementowanych algorytmów użytecznych przy przetwarzaniu obrazów przyczyniła się do modułowej budowy biblioteki w wersji 3.0, która przedstawia się w sposób następujący:
+
+
+\begin{enumerate}
+	\item (Warstwa wierzchnia) system operacyjny,
+	\item interfejsy dla różnych języków i aplikacje,
+	\item moduł \textit {opencv\_contrib} zawierający kod napisany i dołączony do biblioteki przez użytkowników,
+	\item rdzeń OpenCv,
+	\item optymalizacje sprzętowe (warstwa HAL \textit {ang. hardware acceleration layer}).
+\end{enumerate} 
+
+%\begin{figure}
+%	\includegraphics[width=15cm,height=9cm]{budowaModulowa.png}
+%	\caption{Buwowa modułowa OpenCv}
+%\end{figure}
+
+\begin{figure}[!ht]   %Srodowisko do umieszczania rysunkow
+	\begin{center}
+		\includegraphics[width=10cm] {budowaModulowa.png} 
+	\end{center}
+	\caption
+	[Budowa modułowa OpenCv]  % Podpis - do spisu tresci
+	{Budowa modułowa OpenCv}  %Podpis
+\end{figure}
+
+OpenCv w tej wersji wspiera budowanie i dołączanie do biblioteki walsnych modulów.
+
+\newpage
+\begin{figure}[!ht]   %Srodowisko do umieszczania rysunkow
+	\begin{center}
+		\includegraphics[width=7cm] {osCzasu.png} 
+	\end{center}
+	\caption
+	[Rozwuj projektu w czasie]  % Podpis - do spisu tresci
+	{Rozwuj projektu w czasie}  %Podpis
+\end{figure}
+
+ 
+\subsubsection{Popularność projektu}  
+Projekt cieszy się bardzo dużym powodzeniem, które nieustannie rośnie. Świadczy o tym liczba pobrań 
+wynosząca około 14 milionów razy, zaś miesięcznie około 200 tysięcy.
+Obecnie biblioteka zawiera ponad 2500 zoptymalizowanych algorytmów, które służą do przetwarzania obrazów
+również w czasie rzeczywistym i uczenia maszynowego, co znacząco ułatwia tworzenie aplikacji użytkownikom. 
+Programiści piszący kod uwzględniali wymóg przenośności OpenCv, a więc możliwości kompilacji na każdym odpowiednim kompilatorze języka C++, co wymusiło restrykcyjną zgodność ze standardem i ułatwiło obsługę różnych platform.
+Biblioteka dostępna jest na systemach operacyjnych takich jak: Windows, Linux, Mac OS X, do których dołączyły systemy operacyjne platforma mobilnych (Android i IOS), co znacząco przyczyniło się do zwiększenia liczby użytkowników\\
+
+\subsubsection{Zastosowania biblioteki OpenCv}
+Dynamiczny rozwój technologiczny otwiera przed biblioteką nowy horyzont użyteczności.
+OpenCv znajduje zastosowanie w wielu obszarach życia do tego stopnia że wykorzystanie projektu wydaje się rzeczą całkowicie naturalna a wręcz niezauważalną. Biblioteka wykorzystywana jest w:
+\begin{itemize}
+	\item skanowaniu kodów QR,
+	\item monitoringu,
+	\item rozpoznawaniu dzwięków i muzyki,
+	\item obrazowaniu medycznym,
+	\item robotyce,	
+	\item przemyśle - produkcji masowej i kontroli jakości,
+	\item wojsku - bezzałogowe pojazdy, fotografie lotnicze,
+	\item analizie obiektów,
+	\item Google Street View,
+\end{itemize}
+
+\subsubsection{Wybrane funkcje i struktury danych biblioteki OpenCv}
+\paragraph{Struktury danych}
+\paragraph{Funkcje}
+
+\subsection{Formaty obrazow}
+\textbackslash\textbackslash
+obrazy kolorowe i w skali szrosci\\
+\textbackslash\textbackslash
+jpg jak przechowuwany w pamieci budowa pixeli bitowo
+
+\subsection{Eclipse}
+\textbackslash\textbackslash
+srodowisko i kofiguracja
+
+
+
+\end{document}
