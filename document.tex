@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt]{article}
-\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+
 \usepackage{graphicx} 
 \usepackage{float}
 \usepackage{wrapfig} 
@@ -169,11 +170,14 @@
 			
 			Na podstawie wykresu widzimy, że wiersze obrazu( w skali szarości) o ma\l ej zmienności wartości pikseli, będą dawa\l y niewielkie wartości odchylenia standardwego. Jeśli nie równa się ono zeru, ale jest odpowiednio ma\l e możemy za\l ożyć, że badany wiersz ma jedną barwę, a wartość ta wynika z drobnych zak\l uceń i niedoskona\l ości obrazu.
 			
-			Do obliczenia odchylenia standardowego została użyta funkcja udostępniona w bibliotece OpenCv --- \textit {Core.meanStdDev(Mat src, MatOfDouble mean, MatOfDouble stddev)}. Oblicza ona średnią i odchylenie standardowe macieży podanej jako parametr src( w algorytnie jest to jeden wiersz obrazu), które zależy od wszystkich kanałów macieży. W naszym wypadkujest to jeden kanał --- obraz przed obliczeniami został prztransformowany do skali szarości według poniższego algorytmu:
+			Do obliczenia odchylenia standardowego została użyta funkcja udostępniona w bibliotece OpenCv:\\ 
+			\textit {Core.meanStdDev(Mat src, MatOfDouble mean, MatOfDouble stddev)}.\\
+			Oblicza ona średnią i odchylenie standardowe macieży podanej jako parametr src( w algorytnie jest to jeden wiersz obrazu), które zależy od wszystkich kanałów macieży. Tutaj jest to jeden kanał --- obraz przed obliczeniami został prztransformowany do skali szarości według poniższego algorytmu:
 			 
 						
-			Za obliczenie wartości najczęściej występującej odchylenia standardowego odpowiada funkcja 
-			\textit {public List\<Double> calculateModeOfStdDev(List<Double> stdDevList)} wykorzystująca nowe rozwiązania wprowadzone w Javie wersji 8, a więc strumienie i wyrażenia lambda, co znacząco przyśpiesza czas obliczeń oraz przejrzystość napisanego kodu. 
+			Za obliczenie wartości najczęściej występującej odchylenia standardowego odpowiada funkcja: \\
+			\textit {public List \guilsinglleft Double\guilsinglright calculateModeOfStdDev(List \guilsinglleft Double\guilsinglright stdDevList)}\\
+			wykorzystująca nowe rozwiązania wprowadzone w Javie wersji 8, a więc strumienie i wyrażenia lambda, co znacząco przyśpiesza czas obliczeń oraz przejrzystość napisanego kodu. 
 			
 			
 		
